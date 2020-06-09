@@ -1,3 +1,7 @@
-com\school\infrastructure\restapi\StudentController.class
+com\school\infrastructure\messaging\events\StudentDeleteEvent.class
+com\school\infrastructure\messaging\Sink.class
 com\school\infrastructure\restapi\StudentRequest.class
+com\school\infrastructure\messaging\interceptors\MessagingInterceptor.class
+com\school\infrastructure\messaging\listeners\DeleteStudentListener.class
 com\school\infrastructure\repository\FluentJdbcRepository.class
+com\school\infrastructure\restapi\StudentController.class

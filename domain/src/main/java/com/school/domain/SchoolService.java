@@ -18,4 +18,8 @@ public class SchoolService {
     public Student get(Integer id) {
         return repository.findOne(id);
     }
+
+    public void delete(Integer id) {
+        repository.delete(id);
+    }
 }

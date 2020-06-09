@@ -7,4 +7,6 @@ public interface SchoolRepository {
     void save(Student student);
 
     Student findOne(Integer id);
+
+    void delete(Integer id);
 }

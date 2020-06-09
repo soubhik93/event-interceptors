@@ -17,8 +17,6 @@ public class FluentJdbcRepository implements SchoolRepository {
                 .update("INSERT INTO T_STUDENT VALUES (? ,? ,?) ")
                 .params(student.getName(), student.getId(), student.getAddress())
                 .run();
-       System.out.println("In repo");
-       return;
     }
 
     @Override
@@ -28,5 +26,12 @@ public class FluentJdbcRepository implements SchoolRepository {
                 .firstResult(it -> new Student(it.getString("NAME"), it.getInt("ID"), it.getString("ADDRESS")))
                 .orElse(null);
 
+    }
+
+    @Override
+    public void delete(Integer id) {
+        fluentJdbc.query().update("delete from T_STUDENT where ID = ?")
+                .params(id)
+                .run();
     }
 }

@@ -18,7 +18,33 @@ spring:
     change-log: classpath:/liquibase/db.changelog.json
     url: ${spring.datasource.url}
 
+  rabbitmq:
+    address: rabbitmq host details
+    username: rabbitmq username
+    password: rabbitmq password
+    virtual-host: virtual-host
+    ssl:
+      enabled: false
+
   h2:
     console:
       enabled: true
       path: /h2-console
+
+  cloud:
+    stream:
+      default-binder: rabbit
+      bindings:
+        student-deleted-input:
+          destination: exchange-name
+          content-type: application/json
+          group: group-name
+
+      rabbit:
+        bindings:
+          student-deleted-input:
+            consumer:
+              binding-routing-key: routing-key-name
+              auto-bind-dlq: true
+              republish-to-dlq: true
+
